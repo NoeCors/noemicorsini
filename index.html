@@ -1,893 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Noemi Corsini - PhD student</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noemi Corsini</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Favicons -->
-  <link rel='icon' href='assets/img/favicon.png' type='image/x-icon' sizes="16x16" />
+    :root {
+      --bg:     #fafaf8;
+      --text:   #1a1a1a;
+      --soft:   #3a3a3a;
+      --muted:  #888;
+      --accent: #b83232;
+      --line:   #e8e4de;
+    }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    html { font-size: 17px; scroll-behavior: smooth; }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    /* wider wrap so hero-links fit in one row */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 2.5rem; }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    /* ── NAV ── */
+    header { padding: 2rem 0 0; margin-bottom: 3rem; }
+    .nav-inner {
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap; gap: 1rem;
+    }
+    .site-name {
+      font-family: 'Lora', serif; font-size: 1.05rem;
+      font-weight: 400; color: var(--text); cursor: pointer;
+    }
+    nav { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+    nav a {
+      font-size: .78rem; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .18s; cursor: pointer;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    /* ── PAGES ── */
+    .page { display: none; animation: fadeUp .25s ease; }
+    .page.active { display: block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+
+    /* ── HOME ── */
+    .intro-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.6rem;
+      align-items: start;
+      padding: 0.5rem 0 2.5rem;
+    }
+
+    .photo-frame {
+      width: 200px; height: 250px;
+      overflow: hidden; background: var(--line); position: relative;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem; background: #ece9e3;
+      color: var(--muted); font-size: .72rem;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .photo-placeholder svg { width: 2.8rem; opacity: .45; }
+
+    .intro-col h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: .3rem;
+    }
+    .intro-col h1 em { font-style: italic; color: var(--accent); }
+    .intro-role {
+      font-size: .88rem; color: var(--muted);
+      margin-bottom: 1.4rem; letter-spacing: .01em;
+    }
+    .intro-role a { color: var(--accent); text-decoration: none; }
+
+    .bio p { font-size: .93rem; color: var(--soft); margin-bottom: .8rem; line-height: 1.75; }
+    .bio strong { font-weight: 500; color: var(--text); }
+    .bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .18s; }
+    .bio a:hover { border-color: var(--accent); }
+
+    /* research keywords */
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-top: 1rem; margin-bottom: 1.1rem;
+    }
+    .kw {
+      font-size: .7rem; letter-spacing: .05em; text-transform: uppercase;
+      padding: .2rem .6rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    /* icon links */
+    .hero-links { display: flex; flex-wrap: wrap; gap: .75rem 1.3rem; margin-top: .3rem; }
+    .ilink {
+      display: flex; align-items: center; gap: .38rem;
+      font-size: .81rem; color: var(--muted); text-decoration: none; transition: color .18s;
+      white-space: nowrap;
+    }
+    .ilink:hover { color: var(--accent); }
+    .ilink svg { width: .88rem; height: .88rem; flex-shrink: 0; }
+
+    /* news */
+    hr { border: none; border-top: 1px solid var(--line); margin: 2.2rem 0; }
+    .label {
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .9rem;
+    }
+    .news-list { list-style: none; }
+    .news-list li {
+      display: grid; grid-template-columns: 5.5rem 1fr;
+      gap: 1rem; padding: .6rem 0;
+      border-bottom: 1px solid var(--line); font-size: .88rem;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .nd { color: var(--muted); font-size: .78rem; padding-top: .1rem; }
+    .nt { color: var(--soft); }
+    .nt a { color: var(--accent); text-decoration: none; }
+    .nt a:hover { text-decoration: underline; }
+    .nt em { font-style: italic; }
+
+    /* ── RESEARCH ── */
+    .page-title {
+      font-family: 'Lora', serif; font-size: 1.45rem;
+      font-weight: 400; margin-bottom: .45rem; color: var(--text);
+    }
+    .page-intro { font-size: .92rem; color: var(--soft); margin-bottom: 2.2rem; max-width: 600px; }
+
+    .net-wrap {
+      position: relative; height: 250px;
+      margin: .5rem 0 2.5rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .net-wrap canvas { display: block; width: 100%; height: 100%; }
+
+    .interest { margin-bottom: 1.5rem; }
+    .interest h3 {
+      font-family: 'Lora', serif; font-size: .98rem;
+      font-weight: 400; font-style: italic;
+      color: var(--text); margin-bottom: .22rem;
+    }
+    .interest p { font-size: .88rem; color: var(--soft); }
+
+    /* ── PUBLICATIONS ── */
+    .pub-intro { font-size: .92rem; color: var(--soft); margin-bottom: 1.8rem; max-width: 600px; }
+
+    .pub-section {
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); padding-bottom: .4rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1rem; margin-top: 2rem;
+    }
+
+    .pub-list { list-style: none; }
+    .pub-list li {
+      display: flex; gap: .65rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--line);
+      line-height: 1.5;
+    }
+    .pub-list li:last-child { border-bottom: none; }
+    .pub-bullet { color: var(--accent); flex-shrink: 0; font-size: 1rem; margin-top: .12rem; }
+    .pub-body { font-size: .87rem; }
+    .pub-authors { color: var(--muted); margin-bottom: .14rem; }
+    .pub-authors strong { color: var(--soft); font-weight: 500; }
+    .pub-ttl { font-weight: 500; color: var(--text); margin-bottom: .1rem; line-height: 1.42; }
+    .pub-ttl a {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid var(--line); transition: all .18s;
+    }
+    .pub-ttl a:hover { color: var(--accent); border-color: var(--accent); }
+    .pub-journal { font-size: .81rem; color: var(--muted); font-style: italic; }
+
+    /* ── STATINSIGHT ── */
+    .statinsight-wrap { padding: .5rem 0 4rem; }
+    .statinsight-banner {
+      width: 100%; height: 190px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 2.2rem;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      overflow: hidden; position: relative;
+    }
+    .statinsight-banner canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .statinsight-banner-label {
+      position: relative; z-index: 2;
+      font-family: 'Lora', serif;
+      font-size: 1.75rem; font-weight: 400; font-style: italic;
+      color: var(--text); letter-spacing: .02em;
+    }
+    .statinsight-banner-label span { color: var(--accent); }
+    .statinsight-desc { font-size: .93rem; color: var(--soft); margin-bottom: 1.6rem; max-width: 560px; }
+    .statinsight-link-block {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .7rem 1.4rem;
+      border: 1.5px solid var(--accent);
+      color: var(--accent); text-decoration: none;
+      font-size: .83rem; letter-spacing: .06em; text-transform: uppercase;
+      transition: background .18s, color .18s;
+    }
+    .statinsight-link-block:hover { background: var(--accent); color: #fff; }
+    .statinsight-link-block svg { width: .88rem; height: .88rem; }
+
+    /* ── CONTACT ── */
+    .contact-text { font-size: .93rem; color: var(--soft); margin-bottom: 1.8rem; max-width: 520px; }
+    .clist { list-style: none; display: flex; flex-direction: column; gap: .85rem; }
+    .clist li { display: flex; align-items: flex-start; gap: .7rem; font-size: .9rem; color: var(--soft); }
+    .clist svg { width: .92rem; height: .92rem; flex-shrink: 0; margin-top: .28rem; color: var(--accent); }
+    .clist a { color: var(--accent); text-decoration: none; }
+    .clist a:hover { text-decoration: underline; }
+
+    footer { padding: 3rem 0 1.8rem; font-size: .76rem; color: var(--muted); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .intro-block { grid-template-columns: 1fr; gap: 1.6rem; }
+      .photo-frame { width: 140px; height: 175px; }
+      .news-list li { grid-template-columns: 1fr; gap: .06rem; }
+      nav { gap: .8rem; }
+      .net-wrap { height: 190px; }
+    }
+  </style>
 </head>
+<body>
+<div class="wrap">
 
-<body class="index-page">
-
-  <header id="header" class="header d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-
-    <div class="profile-img">
-      <img src="assets/img/small_photo.png" alt="" class="img-fluid rounded-circle">
+  <header>
+    <div class="nav-inner">
+      <span class="site-name" onclick="show('home')">Noemi Corsini</span>
+      <nav>
+        <a id="nav-home"         class="active" onclick="show('home')">Home</a>
+        <a id="nav-research"                    onclick="show('research')">Research</a>
+        <a id="nav-publications"                onclick="show('publications')">Publications</a>
+        <a id="nav-statinsight"                 onclick="show('statinsight')">StatInsight</a>
+        <a id="nav-contact"                     onclick="show('contact')">Contact</a>
+      </nav>
     </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">Noemi Corsini</h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="https://github.com/NoeCors" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://scholar.google.com/citations?user=8u841esAAAAJ&hl=it&oi=ao" class="google-scholar"><i class="bi bi-google"></i></a>
-      <a href="https://www.linkedin.com/in/noemi-corsini-8390b5196/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#education"><i class="bi bi-mortarboard-fill navicon"></i> Education</a></li>
-        <li><a href="#publications"><i class="bi bi-file-earmark-text navicon"></i> Publications</a></li>
-        <!--<li><a href="#teaching"><i class="bi bi-images navicon"></i> Teaching</a></li>-->
-        <!--<li><a href="#people"><i class="bi bi-hdd-stack navicon"></i> People</a></li>-->
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
-    </nav>
-
   </header>
 
-  <main class="main">
+  <!-- ═══ HOME ═══ -->
+  <div class="page active" id="page-home">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <div class="intro-block">
 
-      <img src="assets/img/tortelliclass.png" alt="" data-aos="fade-in" class="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Noemi Corsini</h2>
-        <p>I'm <span class="typed" data-typed-items="a PhD Candidate, a Statistician, a Researcher, a Pasta Maker, a Pasta Lover">PhD Candidate</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p> I am a PhD candidate at <a href="https://www.stat.unipd.it/ricerca/dottorato-di-ricerca">University of Padova</a> passionate about statistical modeling and in particular about clustering complex data structures. I am working under the supervision of <a href="https://homes.stat.unipd.it/giovannamenardi/index.html%3Fp=13.html">professor Giovanna Menardi</a>. It is recently ended my research visit at the <a href="https://www.ucd.ie/mathstat/">School of Mathematics and Statistics, University College Dublin</a> where I was collaborating together with <a href="https://michaelfop.github.io">professor Michael Fop</a>. At the moment I am developing methodologies to find overlapping clusters in high-dimensional network data.
-        </p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/cooking_photo.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Research Interests</h2>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Density-based clustering</strong></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Latent variable models</strong></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Computational statistics</strong></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Bayesian Inference</strong></li>
-                </ul>
-              </div>
-            <p>
-              I thrive both on developing new methods to solve everyday problems and applying exhisting and new methodologies to analyse diverse and challenging real-world datasets.
-              <br><br>
-               <p>For more detailed information have a look to the <a href="https://github.com/NoeCors/noemicorsini/blob/main/CV_Corsini.pdf">full version of my CV</a></p>
-            </p>
+      <!-- photo -->
+      <div class="photo-col">
+        <div class="photo-frame">
+          <!-- swap this block for: <img src="photo.jpg" alt="Noemi Corsini"> -->
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Your photo</span>
           </div>
         </div>
-
       </div>
 
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <!-- <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
-            </div>
-          </div>
-          -->
-          <!-- End Stats Item -->
-
-         <!--  <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
-            </div>
-          </div>
-          -->
-          <!-- End Stats Item -->
-
-        <!--   <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
-            </div>
-          </div>
-          -->
-        <!-- End Stats Item -->
-        <!--   <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
-            </div>
-          </div>
-          -->
-          <!-- End Stats Item -->
-      <!--   </div>
-
-      </div>
- -->
-    </section><!-- /Skills Section -->
-
-    <!-- Education Section -->
-    <section id="education" class="education section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Education</h2>
-       
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-           <!--  <h3 class="education-title">Current position</h3>-->
-            <div class="education-item">
-              <h4><a href="https://www.stat.unipd.it/ricerca/dottorato-di-ricerca">Ph.D in Statistical Sciences</a></h4>
-              <h5>2021 - 2024</h5>
-              <p><em>University of Padova, Italy.</em></p>
-            </div><!-- Edn Education Item -->
-
-            <!-- <h3 class="education-title">Education</h3> -->
-            <div class="education-item">
-              <h4><a href="https://corsi.unibo.it/2cycle/StatisticalSciences/index.html">M.Sc in Statistical Sciences</a></h4>
-              <h5>2019 - 2021</h5>
-              <p><em>University of Bologna, Italy</em></p>
-            </div><!-- Edn Education Item -->
-
-            <div class="education-item">
-              <h4><a href="https://corsi.unibo.it/laurea/StatisticaFinanzaAssicurazioni">B.Sc in Statistical Sciences</a></h4>
-              <h5>2016 - 2019</h5>
-              <p><em>University of Bologna, Italy</em></p>
-            </div><!-- Edn Education Item -->
-
-          </div>
-
-          <!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="Education-title">Professional Experience</h3>
-            <div class="Education-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div>-->
-            <!-- Edn Education Item -->
-
-            <!-- <div class="education-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div>-->
-            <!-- Edn Education Item -->
-
-          </div>
-
+      <!-- bio -->
+      <div class="intro-col">
+        <h1>Noemi <em>Corsini</em></h1>
+        <div class="intro-role">
+          Research Associate &middot;
+          <a href="https://www.crim.cam.ac.uk/people/noemi-corsini" target="_blank">University of Cambridge</a>
+        </div>
+        <div class="bio">
+          <p>I am a <strong>Research Associate</strong> in Statistics at the
+            <a href="https://www.crim.cam.ac.uk/people/noemi-corsini" target="_blank">University of Cambridge</a>.</p>
+          <p>My research is about developing statistical methods for <strong>complex data</strong>,
+            with a focus on network analysis, Bayesian inference, and density-based clustering.
+            I like problems that sit at the edge of what theory can currently explain.</p>
+          <p>I also teach and try to make statistics feel a little less intimidating.</p>
         </div>
 
-      </div>
-
-      </section>
-
-    <!-- Publications Section -->
-    <section id="publications" class="publications section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Publications</h2>
-       
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-           <h4 class="publications-title">Working Papers</h4>
-           <ol>
-              <li><span> Corsini, N., Fop, M. (2024+). <b>A Bayesian overlapping stochastic block model for clustering network data</b></span></li>
-              <li><span> Corsini, N., Menardi, G.(2024+). <b>Modal clustering for categorical and mixed data</b></span></li>
-              <li><span> Corsini, N., Bernini, C., Pattitoni, P.(2024+). <b>Modelling the global efficiency of the insurance industry: a meta-frontier approach</b></span></li>
-           </ol>
-           <h4 class="publications-title">Articles in refereed journals</h4>
-          <div class="publications-item">
-              <ol>
-                <li><span> Casoli, D., Corsini, N., Presutti, M., Magnini, V. (2023). <a href="https://doi.org/10.3727/108354223X16833130470150"><b>Why (not) participate in an adventure motorcycle tourism event?</b></a>, Tourism Analysis.</span></li>
-                <li><span> Corsini, N., and Viroli, C. (2022). <a href="https://doi.org/10.1016/j.csda.2022.107447"><b>Dealing with overdispersion in multivariate count data</b></a>, Computational Statistics & Data Analysis.</span></li>
-              </ol>
-            </div>
-            <h4 class="publications-title">Conference Proceedings</h4>
-            <div class="publications-item">
-              <ol>
-                <li><span> Corsini, N., Fop, M. (2024). <b>A Bayesian overlapping stochastic block model for clustering biographical networks</b>, In Book of Short Papers SIS 2024, in press</span></li>
-                <li><span> Corsini, N., Menardi, G. (2023). <a href="https://www.statlab-unisa.it/cladag2023/wp-content/uploads/simple-file-list/CP-4183-11365-1-RV.pdf"><b>Modal clustering for categorical data</b></a>, In Proceedings of the CLADAG 2023 Conference of the CLAssification and Data Analysis Group (CLADAG), Salerno.</span></li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="Publications-title">Professional Experience</h3>
-            <div class="Publications-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div>-->
-            <!-- Edn Publications Item -->
-
-            <!-- <div class="publications-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div>-->
-            <!-- Edn Publications Item -->
-
-          </div>
-
+        <!-- research keywords -->
+        <div class="keywords">
+          <span class="kw">Network Data</span>
+          <span class="kw">Bayesian Inference</span>
+          <span class="kw">Density-based Clustering</span>
+          <span class="kw">Latent Variable Models</span>
         </div>
 
-      </div>
-
-    </section><!-- /Stats Section -->
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>R, Latex</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span> Python, STATA</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>SAS, SPSS, SQL</span> <i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Italian, English</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>French</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Spanish, Portuguese</span> <i class="val">20%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
+        <!-- icon links -->
+        <div class="hero-links">
+          <a class="ilink" href="#" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            CV
+          </a>
+          <a class="ilink" href="mailto:nc670@cam.ac.uk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+            Email
+          </a>
+          <a class="ilink" href="https://github.com/NoeCors" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 20 1s-1.27-.35-4 1.48a13.38 13.38 0 0 0-7 0C6.27.65 5 1 5 1a5.07 5.07 0 0 0-.09 3.77A5.44 5.44 0 0 0 3.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a class="ilink" href="https://scholar.google.com/citations?user=8u841esAAAAJ&hl=en&oi=ao" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            Google Scholar
+          </a>
+          <a class="ilink" href="https://www.linkedin.com/in/noemi-corsini-8390b5196/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="8" y1="11" x2="8" y2="17"/><line x1="8" y1="7.5" x2="8" y2="8.5"/><path d="M12 17v-4a2 2 0 0 1 4 0v4"/><line x1="12" y1="11" x2="12" y2="17"/></svg>
+            LinkedIn
+          </a>
         </div>
-
-      </div>
-
-
-    </section><!-- /Publications Section -->
-
-    <!-- Portfolio Section -->
-    <!-- <section id="portfolio" class="portfolio section">-->
-
-      <!-- Section Title -->
-      <!-- <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>-->
-      <!-- End Section Title -->
-
-      <!--<div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
-          </ul>-->
-          <!-- End Portfolio Filters -->
-
-          <!--<div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-            <!--<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>-->
-            <!-- End Portfolio Item -->
-
-          <!--</div>-->
-            <!-- End Portfolio Container -->
-
-        <!-- </div>
-
-      </div>-->
-
-    </section><!-- /Portfolio Section -->
-
-    <!-- Services Section -->
-    <section id="service" class="service section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Passions</h2>
-        <p> Not only statistics! I have many other passions. Here’s a very brief list! If you want to know more or just want to chat about it, don’t hesitate to contact me!</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-arrow-through-heart-fill"></i></div>
-            <div>
-              <h4 class="title"> Cooking</h4>
-              <p class="description">I love cooking in general; it is my coping mechanism. In particular, I very much enjoy preparing homemade fresh pasta from scratch.</p>
-            </div>
-          </div>
-          <!-- End Service Item -->
-
-          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-lightbulb-fill"></i></div>
-            <div>
-              <h4 class="title"> Creating Clothes</h4>
-              <p class="description">I like to train my creativity by creating new clothes for myself through sewing, knitting, and crocheting</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-person-walking"></i></div>
-            <div>
-              <h4 class="title">Sports</h4>
-              <p class="description">If I have to choose the three sports that I enjoy practising the most at the moment I would choose aereal silks, running and bouldering. </p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-book"></i></div>
-            <div>
-              <h4 class="title">Reading</h4>
-              <p class="description">I have always been a passionate reader. The genre of books I read changes and evolves along with me and my life.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-airplane"></i></div>
-            <div>
-              <h4 class="title">Traveling</h4>
-              <p class="description">Pretty obvious this one, who doesn't like to travel? </p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <!--<div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-            </div>
-          </div>-->
-          <!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Testimonials Section -->
-    <!-- <section id="testimonials" class="testimonials section">-->
-
-      <!-- Section Title 
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div>
-      End Section Title -->
-
-      <!--<div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div>
-            End testimonial item -->
-
-            <!--<div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div>
-            End testimonial item -->
-
-            <!--<div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div> End testimonial item -->
-
-            <!--<div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div> End testimonial item -->
-
-            <!--<div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div> End testimonial item -->
-
-          <!--</div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section> /Testimonials Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Via Cesare Battisti, 241 - 35121 Padova</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <!-- <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                </div>
-              </div> -->
-              <!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>noemi.corsini@phd.unipd.it <br> corsini.noemi97@gmail.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.238714435144!2d11.881733711864008!3d45.404525637297546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda564e652e63%3A0x7d2e14da0badd282!2sDipartimento%20di%20Scienze%20Statistiche!5e0!3m2!1sit!2sit!4v1719181321382!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>-->
-
-          <!-- <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div>-->
-          <!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
-  </footer>
+    <hr>
+    <div class="label">News</div>
+    <ul class="news-list">
+      <li>
+        <span class="nd">Mar 2026</span>
+        <span class="nt">Invited talk at the <a href="https://www.smsa2026.de/" target="_blank">Workshop on Stochastic Models, Statistics and Their Applications</a>, W&uuml;rzburg, Germany.</span>
+      </li>
+      <li>
+        <span class="nd">Feb 2026</span>
+        <span class="nt">Paper on the extension of modal clustering to the categorical data setting is out! Check it out <em>here!</em></span>
+      </li>
+    </ul>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  </div><!-- /page-home -->
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+  <!-- ═══ RESEARCH ═══ -->
+  <div class="page" id="page-research">
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <div class="net-wrap"><canvas id="net"></canvas></div>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <div class="page-title">Research</div>
+    <p class="page-intro">I develop statistical methods for structured and relational data, motivated by problems where the underlying network or clustering structure matters &mdash; both theoretically and in practice.</p>
 
+    <div class="label">Interests</div>
+    <div class="interest">
+      <h3>Network data</h3>
+      <p>Statistical models and inference for graph-structured data &mdash; stochastic block models, latent position models, and extensions to dynamic and multilayer settings.</p>
+    </div>
+    <div class="interest">
+      <h3>Clustering and community detection</h3>
+      <p>Algorithmic and theoretical aspects of recovering latent group structure, including spectral methods and regularisation under sparsity.</p>
+    </div>
+    <div class="interest">
+      <h3>Bayesian statistics</h3>
+      <p>Nonparametric and hierarchical Bayesian models for complex structured data, with a focus on scalable inference and interpretability.</p>
+    </div>
+
+  </div><!-- /page-research -->
+
+  <!-- ═══ PUBLICATIONS ═══ -->
+  <div class="page" id="page-publications">
+
+    <div class="page-title">Publications</div>
+
+    <div class="pub-section">Preprints</div>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors">Campana, P.; <strong>Corsini, N.</strong>; Meneghini, C.</div>
+          <div class="pub-ttl">Individual and relational risk factors for youth serious violence: evidence from UK Police data</div>
+          <div class="pub-journal">Journal of Interpersonal Violence</div>
+        </div>
+      </li>
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors">Bernini, C.; <strong>Corsini, N.</strong>; Galli, F.; Pattitoni, P.</div>
+          <div class="pub-ttl">Uneven frontiers: global efficiency and technological gaps in the insurance industry</div>
+          <div class="pub-journal">Socio-Economic Planning Sciences</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pub-section">Published</div>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors"><strong>Corsini, N.</strong>; Menardi, G.</div>
+          <div class="pub-ttl"><a href="https://link.springer.com/article/10.1007/s00357-026-09538-5" target="_blank">Modal clustering for categorical data</a></div>
+          <div class="pub-journal">Journal of Classification (2026)</div>
+        </div>
+      </li>
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors"> <strong>Corsini, N.</strong>; Fop, M.</div>
+          <div class="pub-ttl"><a href="https://link.springer.com/chapter/10.1007/978-3-031-64431-3_77" target="_blank">A Bayesian overlapping stochastic block model for clustering biographical networks</a></div>
+          <div class="pub-journal">Methodological and Applied Statistics and Demography III. SIS 2024. Italian Statistical Society Series on Advances in Statistics (2024)</div>
+        </div>
+      </li>
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors">Casoli, D.; <strong>Corsini, N.</strong>; Presutti, M.; Magnini, V.</div>
+          <div class="pub-ttl"><a href="https://www.ingentaconnect.com/content/cog/ta/2023/00000028/00000004/art00005" target="_blank">Why (not) participate in an adventure motorcycle tourism event?</a></div>
+          <div class="pub-journal">Tourism Analysis (2023)</div>
+        </div>
+      </li>
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors"><strong>Corsini, N.</strong>; Menardi, G.</div>
+          <div class="pub-ttl"><a href="https://www.statlab-unisa.it/cladag2023/wp-content/uploads/simple-file-list/CP-4183-11365-1-RV.pdf" target="_blank">Modal clustering for categorical data</a></div>
+          <div class="pub-journal">In Proceedings of the CLADAG 2023 Conference of the Classification and Data Analysis Group (2023)</div>
+        </div>
+      </li>
+      <li>
+        <span class="pub-bullet">&#8226;</span>
+        <div class="pub-body">
+          <div class="pub-authors"><strong>Corsini, N.</strong>; Viroli, C.</div>
+          <div class="pub-ttl"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947322000275?via%3Dihub" target="_blank">Dealing with overdispersion in multivariate count data</a></div>
+          <div class="pub-journal">Computational Statistics &amp; Data Analysis (2022)</div>
+        </div>
+      </li>
+    </ul>
+
+  </div><!-- /page-publications -->
+
+  <!-- ═══ STATINSIGHT ═══ -->
+  <div class="page" id="page-statinsight">
+    <div class="statinsight-wrap">
+
+      <div class="statinsight-banner">
+        <canvas id="net2"></canvas>
+        <div class="statinsight-banner-label">Stat<span>Insight</span></div>
+      </div>
+
+      <div class="page-title">StatInsight</div>
+      <p class="statinsight-desc">
+        StatInsight is my independent statistical consulting practice. I work with organisations,
+        researchers, and teams who need rigorous data analysis, statistical modelling, or methodological
+        guidance &mdash; from study design through to interpretation and communication of results.
+      </p>
+      <p class="statinsight-desc">
+        If you have a project that could benefit from statistical expertise, I would be happy to hear from you.
+      </p>
+
+      <a class="statinsight-link-block" href="https://statinsight.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Visit statinsight.com
+      </a>
+
+    </div>
+  </div><!-- /page-statinsight -->
+
+  <!-- ═══ CONTACT ═══ -->
+  <div class="page" id="page-contact">
+    <div class="page-title">Contact</div>
+    <p class="contact-text">Feel free to reach out if you're interested in collaborating or just want to chat about my research topics! Send me an email, and we can arrange a call or meeting.</p>
+    <ul class="clist">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+        <a href="mailto:nc670@cam.ac.uk">nc670@cam.ac.uk</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Institute of Criminology<br>University of Cambridge, UK</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 20 1s-1.27-.35-4 1.48a13.38 13.38 0 0 0-7 0C6.27.65 5 1 5 1a5.07 5.07 0 0 0-.09 3.77A5.44 5.44 0 0 0 3.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <a href="https://noecors.github.io/noemicorsini/" target="_blank">github.io/noemicorsini</a>
+      </li>
+    </ul>
+  </div><!-- /page-contact -->
+
+  <footer>&copy; 2025 Noemi Corsini</footer>
+
+</div><!-- /wrap -->
+
+<script>
+/* ── navigation ── */
+function show(id) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.querySelectorAll('nav a').forEach(function(a) {
+    a.classList.remove('active');
+  });
+  document.getElementById('page-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  net1.stop();
+  net2.stop();
+  if (id === 'research')    { setTimeout(function(){ net1.start(); }, 50); }
+  if (id === 'statinsight') { setTimeout(function(){ net2.start(); }, 50); }
+}
+
+/* ── network animation ── */
+function makeNetwork(canvasEl, opts) {
+  var ctx  = canvasEl.getContext('2d');
+  var dpr  = window.devicePixelRatio || 1;
+  var COLS = opts.cols || ['#b83232','#c8693a','#4a7fa5','#6a9e72'];
+  var W, H, nodes, raf;
+
+  function resize() {
+    var r = canvasEl.parentElement.getBoundingClientRect();
+    W = canvasEl.width  = r.width  * dpr;
+    H = canvasEl.height = r.height * dpr;
+    canvasEl.style.width  = r.width  + 'px';
+    canvasEl.style.height = r.height + 'px';
+  }
+
+  function seed() {
+    nodes = [];
+    var clusters = opts.clusters || [
+      {cx:.18,cy:.42,r:.2},{cx:.5,cy:.22,r:.17},
+      {cx:.75,cy:.55,r:.19},{cx:.38,cy:.72,r:.14},{cx:.88,cy:.25,r:.12}
+    ];
+    clusters.forEach(function(c, ci) {
+      for (var i = 0; i < (opts.perCluster || 9); i++) {
+        var a = Math.random() * Math.PI * 2;
+        var d = Math.random() * c.r;
+        nodes.push({
+          x:  (c.cx + Math.cos(a)*d) * W,
+          y:  (c.cy + Math.sin(a)*d) * H,
+          vx: (Math.random()-.5)*.38,
+          vy: (Math.random()-.5)*.38,
+          r:  (Math.random()*2+1.6)*dpr,
+          ci: ci % COLS.length
+        });
+      }
+    });
+  }
+
+  function rgba(hex, a) {
+    var r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+    return 'rgba('+r+','+g+','+b+','+a+')';
+  }
+
+  function frame() {
+    ctx.clearRect(0,0,W,H);
+    var D = Math.min(W,H)*.3;
+    for (var i=0; i<nodes.length; i++) {
+      for (var j=i+1; j<nodes.length; j++) {
+        var na=nodes[i], nb=nodes[j];
+        var dist=Math.hypot(na.x-nb.x, na.y-nb.y);
+        if (dist<D) {
+          var t=1-dist/D;
+          ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y);
+          ctx.strokeStyle = na.ci===nb.ci ? rgba(COLS[na.ci],t*.5) : rgba('#aaaaaa',t*.15);
+          ctx.lineWidth   = (na.ci===nb.ci ? .9 : .45)*dpr;
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(function(n) {
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = rgba(COLS[n.ci],.82);
+      ctx.fill();
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    });
+    raf = requestAnimationFrame(frame);
+  }
+
+  return {
+    start: function() { cancelAnimationFrame(raf); resize(); seed(); frame(); },
+    stop:  function() { cancelAnimationFrame(raf); },
+    resize:function() { if(nodes) resize(); }
+  };
+}
+
+var net1 = makeNetwork(document.getElementById('net'), {});
+var net2 = makeNetwork(document.getElementById('net2'), {
+  cols: ['#b83232','#1a1a1a','#888','#c8693a'],
+  clusters: [
+    {cx:.12,cy:.5,r:.18},{cx:.4,cy:.25,r:.16},
+    {cx:.65,cy:.6,r:.18},{cx:.88,cy:.35,r:.14}
+  ],
+  perCluster: 7
+});
+
+window.addEventListener('resize', function() { net1.resize(); net2.resize(); });
+</script>
 </body>
-
 </html>
